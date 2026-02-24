@@ -1,0 +1,54 @@
+blueprint:
+  name: Zigbee2MQTT – Generic Action Mapper
+  description: >
+    A fully generic blueprint for mapping Zigbee2MQTT action payloads
+    to Home Assistant actions. Works with any Z2M remote or button device.
+  domain: automation
+  input:
+    device_name:
+      name: Zigbee2MQTT Device Name
+      description: >
+        The device name as shown in zigbee2mqtt/<device_name>/action.
+        Example: "zg-101zs" or "livingroom_switch".
+      selector:
+        text:
+
+    mappings:
+      name: Action Mappings
+      description: >
+        Add as many mappings as you want. For each entry, specify the
+        Zigbee2MQTT action payload (e.g. "1_single", "2_hold", "button_3_double")
+        and the Home Assistant action to run.
+      selector:
+        object:
+          multiple: true
+          properties:
+            action:
+              name: Z2M Action Payload
+              selector:
+                text:
+            ha_action:
+              name: Home Assistant Action
+              selector:
+                action: {}
+
+trigger:
+  - platform: mqtt
+    topic: "zigbee2mqtt/{{ device_name }}/action"
+
+variables:
+  payload: "{{ trigger.payload }}"
+  mappings: !input mappings
+
+action:
+  - choose:
+      - conditions: >
+          {{ payload in mappings | map(attribute='action') | list }}
+        sequence:
+          - variables:
+              idx: "{{ (mappings | map(attribute='action') | list).index(payload) }}"
+              selected: "{{ mappings[idx].ha_action }}"
+          - choose:
+              - conditions: "{{ selected is defined }}"
+                sequence: !input selected
+mode: single
