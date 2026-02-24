@@ -31,7 +31,7 @@ blueprint:
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     
   domain: automation
-  version: "1.2.7"
+  version: "1.2.8"
 
  
     # -----------------------------
@@ -62,138 +62,7 @@ variables:
   payload: "{{ trigger.payload }}"
   pattern: !input action_pattern
 
-  mappings:
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_1_button | string))
-            | replace("{{type}}", (
-                !input mapping_1_type == "custom"
-                and !input mapping_1_type_custom
-                or !input mapping_1_type
-              ) | string)
-        }}
-      ha: !input mapping_1_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_2_button | string))
-            | replace("{{type}}", (
-                !input mapping_2_type == "custom"
-                and !input mapping_2_type_custom
-                or !input mapping_2_type
-              ) | string)
-        }}
-      ha: !input mapping_2_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_3_button | string))
-            | replace("{{type}}", (
-                !input mapping_3_type == "custom"
-                and !input mapping_3_type_custom
-                or !input mapping_3_type
-              ) | string)
-        }}
-      ha: !input mapping_3_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_4_button | string))
-            | replace("{{type}}", (
-                !input mapping_4_type == "custom"
-                and !input mapping_4_type_custom
-                or !input mapping_4_type
-              ) | string)
-        }}
-      ha: !input mapping_4_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_5_button | string))
-            | replace("{{type}}", (
-                !input mapping_5_type == "custom"
-                and !input mapping_5_type_custom
-                or !input mapping_5_type
-              ) | string)
-        }}
-      ha: !input mapping_5_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_6_button | string))
-            | replace("{{type}}", (
-                !input mapping_6_type == "custom"
-                and !input mapping_6_type_custom
-                or !input mapping_6_type
-              ) | string)
-        }}
-      ha: !input mapping_6_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_7_button | string))
-            | replace("{{type}}", (
-                !input mapping_7_type == "custom"
-                and !input mapping_7_type_custom
-                or !input mapping_7_type
-              ) | string)
-        }}
-      ha: !input mapping_7_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_8_button | string))
-            | replace("{{type}}", (
-                !input mapping_8_type == "custom"
-                and !input mapping_8_type_custom
-                or !input mapping_8_type
-              ) | string)
-        }}
-      ha: !input mapping_8_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_9_button | string))
-            | replace("{{type}}", (
-                !input mapping_9_type == "custom"
-                and !input mapping_9_type_custom
-                or !input mapping_9_type
-              ) | string)
-        }}
-      ha: !input mapping_9_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_10_button | string))
-            | replace("{{type}}", (
-                !input mapping_10_type == "custom"
-                and !input mapping_10_type_custom
-                or !input mapping_10_type
-              ) | string)
-        }}
-      ha: !input mapping_10_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_11_button | string))
-            | replace("{{type}}", (
-                !input mapping_11_type == "custom"
-                and !input mapping_11_type_custom
-                or !input mapping_11_type
-              ) | string)
-        }}
-      ha: !input mapping_11_ha_action
-
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_12_button | string))
-            | replace("{{type}}", (
-                !input mapping_12_type == "custom"
-                and !input mapping_12_type_custom
-                or !input mapping_12_type
-              ) | string)
-        }}
-      ha: !input mapping_12_ha_action
+  
 
 # ============================================================
 # ACTION
