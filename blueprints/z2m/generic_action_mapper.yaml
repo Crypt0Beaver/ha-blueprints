@@ -32,7 +32,7 @@ blueprint:
     The action name is constructed from a user-defined pattern using {{button}} and {{type}}.
     
   domain: automation
-  # version: 1.2.1
+  version: 1.2.2
 
   input:
 
@@ -41,9 +41,11 @@ blueprint:
     # -----------------------------
 
     device_name:
-      name: Zigbee2MQTT Device Name
+      name: Zigbee2MQTT Device
+      description: Select the device that publishes Zigbee2MQTT actions
       selector:
-        text:
+        device:
+          integration: mqtt
 
     action_pattern:
       name: Action Pattern
