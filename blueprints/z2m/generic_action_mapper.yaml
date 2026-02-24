@@ -25,6 +25,7 @@ blueprint:
   description: >
     A generic blueprint for mapping Zigbee2MQTT action payloads.
   domain: automation
+  version: "1.2.0"
 
   input:
 
