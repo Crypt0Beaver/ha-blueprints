@@ -26,7 +26,7 @@ action_type_options: &action_type_options
 # ============================================================
 
 blueprint:
-  name: Zigbee2MQTT
+  name: Zigbee2MQTTT
   description: >
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     
