@@ -16,19 +16,4 @@ trigger:
     topic: "zigbee2mqtt/{{ device_name }}/action"
 
 
-# ============================================================
-# ACTION
-# ============================================================
-
-action:
-  - choose:
-      - conditions: "{{ payload in mappings | map(attribute='action') | list }}"
-        sequence:
-          - variables:
-              idx: "{{ (mappings | map(attribute='action') | list).index(payload) }}"
-              selected: "{{ mappings[idx].ha }}"
-          - choose:
-              - conditions: "{{ selected is defined }}"
-                sequence: !input selected
-
 mode: single
