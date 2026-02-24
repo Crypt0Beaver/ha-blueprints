@@ -22,13 +22,15 @@ blueprint:
       selector:
         object:
           multiple: true
-          properties:
+          fields:
             action:
               name: Z2M Action Payload
+              description: The exact payload sent by Zigbee2MQTT.
               selector:
                 text:
             ha_action:
               name: Home Assistant Action
+              description: Action to run when this payload is received.
               selector:
                 action: {}
 
@@ -51,4 +53,5 @@ action:
           - choose:
               - conditions: "{{ selected is defined }}"
                 sequence: !input selected
+
 mode: single
