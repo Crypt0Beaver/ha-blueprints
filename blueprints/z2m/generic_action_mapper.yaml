@@ -489,13 +489,41 @@ variables:
 
 action:
   - choose:
-      - conditions: "{{ payload in mappings | map(attribute='action') | list }}"
-        sequence:
-          - variables:
-              idx: "{{ (mappings | map(attribute='action') | list).index(payload) }}"
-              selected: "{{ mappings[idx].ha }}"
-          - choose:
-              - conditions: "{{ selected is defined }}"
-                sequence: !input selected
+      - conditions: "{{ payload == mappings[0].action }}"
+        sequence: !input mapping_1_ha_action
+
+      - conditions: "{{ payload == mappings[1].action }}"
+        sequence: !input mapping_2_ha_action
+
+      - conditions: "{{ payload == mappings[2].action }}"
+        sequence: !input mapping_3_ha_action
+
+      - conditions: "{{ payload == mappings[3].action }}"
+        sequence: !input mapping_4_ha_action
+
+      - conditions: "{{ payload == mappings[4].action }}"
+        sequence: !input mapping_5_ha_action
+
+      - conditions: "{{ payload == mappings[5].action }}"
+        sequence: !input mapping_6_ha_action
+
+      - conditions: "{{ payload == mappings[6].action }}"
+        sequence: !input mapping_7_ha_action
+
+      - conditions: "{{ payload == mappings[7].action }}"
+        sequence: !input mapping_8_ha_action
+
+      - conditions: "{{ payload == mappings[8].action }}"
+        sequence: !input mapping_9_ha_action
+
+      - conditions: "{{ payload == mappings[9].action }}"
+        sequence: !input mapping_10_ha_action
+
+      - conditions: "{{ payload == mappings[10].action }}"
+        sequence: !input mapping_11_ha_action
+
+      - conditions: "{{ payload == mappings[11].action }}"
+        sequence: !input mapping_12_ha_action
+
 
 mode: single
