@@ -31,24 +31,7 @@ blueprint:
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     
   domain: automation
-  version: "1.2.8"
-
- 
-    # -----------------------------
-    # DEVICE + PATTERN
-    # -----------------------------
-
-
-
-    # ============================================================
-    # 12 MAPPING SLOTS (manually expanded)
-    # ============================================================
-
-
-
-# ============================================================
-# TRIGGER
-# ============================================================
+  version: "1.2.9"
 
 trigger:
   - platform: mqtt
