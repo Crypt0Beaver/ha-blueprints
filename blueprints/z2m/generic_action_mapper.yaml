@@ -1,34 +1,32 @@
+# -----------------------------
+# YAML ANCHORS (must be outside blueprint)
+# -----------------------------
+
+button_options: &button_options
+  - "1"
+  - "2"
+  - "3"
+  - "4"
+
+action_type_options: &action_type_options
+  - single
+  - double
+  - hold
+  - long
+  - release
+  - custom
+
+# -----------------------------
+# BLUEPRINT HEADER
+# -----------------------------
+
 blueprint:
   name: Zigbee2MQTT – Generic Action Mapper (Pattern + Anchors)
   description: >
-    A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
-    The action name is constructed from a user-defined pattern using {{button}} and {{type}}.
+    A generic blueprint for mapping Zigbee2MQTT action payloads.
   domain: automation
-  version: "1.2.0"
 
   input:
-
-    # -----------------------------
-    # GLOBAL OPTIONS (YAML ANCHORS)
-    # -----------------------------
-
-    button_options: &button_options
-      - "1"
-      - "2"
-      - "3"
-      - "4"
-
-    action_type_options: &action_type_options
-      - single
-      - double
-      - hold
-      - long
-      - release
-      - custom
-
-    # -----------------------------
-    # DEVICE + PATTERN
-    # -----------------------------
 
     device_name:
       name: Zigbee2MQTT Device Name
@@ -37,17 +35,11 @@ blueprint:
 
     action_pattern:
       name: Action Pattern
-      description: >
-        Use {{button}} and {{type}} placeholders.
-        Example: "{{button}}_{{type}}" or "button_{{button}}_{{type}}"
       default: "{{button}}_{{type}}"
       selector:
         text:
 
-    # -----------------------------
-    # MAPPING SLOT 1
-    # -----------------------------
-
+    # SLOT 1
     mapping_1_button:
       name: Mapping 1 – Button Number
       selector:
@@ -62,7 +54,6 @@ blueprint:
 
     mapping_1_type_custom:
       name: Mapping 1 – Custom Action Type
-      description: Only used if Action Type = custom
       selector:
         text:
 
@@ -71,49 +62,14 @@ blueprint:
       selector:
         action:
 
-    # -----------------------------
-    # MAPPING SLOT 2
-    # -----------------------------
-
-    mapping_2_button:
-      name: Mapping 2 – Button Number
-      selector:
-        select:
-          options: *button_options
-
-    mapping_2_type:
-      name: Mapping 2 – Action Type
-      selector:
-        select:
-          options: *action_type_options
-
-    mapping_2_type_custom:
-      name: Mapping 2 – Custom Action Type
-      selector:
-        text:
-
-    mapping_2_ha_action:
-      name: Mapping 2 – Home Assistant Action
-      selector:
-        action:
-
-# -----------------------------
-# TRIGGER
-# -----------------------------
-
 trigger:
   - platform: mqtt
     topic: "zigbee2mqtt/{{ device_name }}/action"
-
-# -----------------------------
-# VARIABLES
-# -----------------------------
 
 variables:
   payload: "{{ trigger.payload }}"
   pattern: !input action_pattern
 
-  # Build mapping list manually (no Jinja loops allowed)
   mappings:
     - action: >
         {{ pattern
@@ -126,30 +82,9 @@ variables:
         }}
       ha: !input mapping_1_ha_action
 
-    - action: >
-        {{ pattern
-            | replace("{{button}}", (!input mapping_2_button | string))
-            | replace("{{type}}", (
-                !input mapping_2_type == "custom"
-                and !input mapping_2_type_custom
-                or !input mapping_2_type
-              ) | string)
-        }}
-      ha: !input mapping_2_ha_action
-
-# -----------------------------
-# ACTION
-# -----------------------------
-
 action:
   - choose:
-      - conditions: "{{ payload in mappings | map(attribute='action') | list }}"
-        sequence:
-          - variables:
-              idx: "{{ (mappings | map(attribute='action') | list).index(payload) }}"
-              selected: "{{ mappings[idx].ha }}"
-          - choose:
-              - conditions: "{{ selected is defined }}"
-                sequence: !input selected
+      - conditions: "{{ payload == mappings[0].action }}"
+        sequence: !input mapping_1_ha_action
 
 mode: single
