@@ -31,7 +31,7 @@ blueprint:
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     
   domain: automation
-  version: "1.2.5"
+  version: "1.2.6"
 
   input:
 
@@ -39,19 +39,7 @@ blueprint:
     # DEVICE + PATTERN
     # -----------------------------
 
-    device_name:
-      name: Zigbee2MQTT Device Name
-      selector:
-        text:
 
-    action_pattern:
-      name: Action Pattern
-      description: >
-        Use {{button}} and {{type}} placeholders.
-        Example: "{{button}}_{{type}}" or "button_{{button}}_{{type}}"
-      default: "{{button}}_{{type}}"
-      selector:
-        text:
 
     # ============================================================
     # 12 MAPPING SLOTS (manually expanded)
