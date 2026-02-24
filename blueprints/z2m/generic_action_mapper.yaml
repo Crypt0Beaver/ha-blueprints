@@ -9,21 +9,12 @@ blueprint:
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     
   domain: automation
-  version: "1.2.10"
+  version: "1.2.11"
 
 trigger:
   - platform: mqtt
     topic: "zigbee2mqtt/{{ device_name }}/action"
 
-# ============================================================
-# VARIABLES
-# ============================================================
-
-variables:
-  payload: "{{ trigger.payload }}"
-  pattern: !input action_pattern
-
-  
 
 # ============================================================
 # ACTION
