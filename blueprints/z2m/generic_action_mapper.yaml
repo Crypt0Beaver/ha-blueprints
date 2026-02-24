@@ -1,6 +1,6 @@
-# -----------------------------
-# YAML ANCHORS (must be outside blueprint)
-# -----------------------------
+# ============================================================
+# YAML ANCHORS (must be outside the blueprint block)
+# ============================================================
 
 button_options: &button_options
   - "1"
@@ -16,18 +16,23 @@ action_type_options: &action_type_options
   - release
   - custom
 
-# -----------------------------
-# BLUEPRINT HEADER
-# -----------------------------
+# ============================================================
+# BLUEPRINT
+# ============================================================
 
 blueprint:
-  name: Zigbee2MQTT – Generic Action Mapper (Pattern + Anchors)
+  name: Zigbee2MQTT – Generic Action Mapper (Pattern + 12 slots)
   description: >
-    A generic blueprint for mapping Zigbee2MQTT action payloads.
+    A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
+    The action name is constructed from a user-defined pattern using {{button}} and {{type}}.
   domain: automation
   version: "1.2.0"
 
   input:
+
+    # -----------------------------
+    # DEVICE + PATTERN
+    # -----------------------------
 
     device_name:
       name: Zigbee2MQTT Device Name
@@ -36,56 +41,85 @@ blueprint:
 
     action_pattern:
       name: Action Pattern
+      description: >
+        Use {{button}} and {{type}} placeholders.
+        Example: "{{button}}_{{type}}" or "button_{{button}}_{{type}}"
       default: "{{button}}_{{type}}"
       selector:
         text:
 
-    # SLOT 1
-    mapping_1_button:
-      name: Mapping 1 – Button Number
+    # ============================================================
+    # 12 MAPPING SLOTS
+    # ============================================================
+
+    {% for i in range(1,13) %}
+    mapping_{{i}}_button:
+      name: Mapping {{i}} – Button Number
       selector:
         select:
           options: *button_options
 
-    mapping_1_type:
-      name: Mapping 1 – Action Type
+    mapping_{{i}}_type:
+      name: Mapping {{i}} – Action Type
       selector:
         select:
           options: *action_type_options
 
-    mapping_1_type_custom:
-      name: Mapping 1 – Custom Action Type
+    mapping_{{i}}_type_custom:
+      name: Mapping {{i}} – Custom Action Type
+      description: Only used if Action Type = custom
       selector:
         text:
 
-    mapping_1_ha_action:
-      name: Mapping 1 – Home Assistant Action
+    mapping_{{i}}_ha_action:
+      name: Mapping {{i}} – Home Assistant Action
       selector:
         action:
+    {% endfor %}
+
+# ============================================================
+# TRIGGER
+# ============================================================
 
 trigger:
   - platform: mqtt
     topic: "zigbee2mqtt/{{ device_name }}/action"
+
+# ============================================================
+# VARIABLES
+# ============================================================
 
 variables:
   payload: "{{ trigger.payload }}"
   pattern: !input action_pattern
 
   mappings:
+    {% for i in range(1,13) %}
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_1_button | string))
+            | replace("{{button}}", (!input mapping_{{i}}_button | string))
             | replace("{{type}}", (
-                !input mapping_1_type == "custom"
-                and !input mapping_1_type_custom
-                or !input mapping_1_type
+                !input mapping_{{i}}_type == "custom"
+                and !input mapping_{{i}}_type_custom
+                or !input mapping_{{i}}_type
               ) | string)
         }}
-      ha: !input mapping_1_ha_action
+      ha: !input mapping_{{i}}_ha_action
+    {% endfor %}
+
+# ============================================================
+# ACTION
+# ============================================================
 
 action:
   - choose:
-      - conditions: "{{ payload == mappings[0].action }}"
-        sequence: !input mapping_1_ha_action
+      - conditions: "{{ payload in mappings | map(attribute='action') | list }}"
+        sequence:
+          - variables:
+              idx: "{{ (mappings | map(attribute='action') | list).index(payload) }}"
+              selected: "{{ mappings[idx].ha }}"
+          - choose:
+              - conditions: "{{ selected is defined }}"
+                sequence: !input selected
 
 mode: single
