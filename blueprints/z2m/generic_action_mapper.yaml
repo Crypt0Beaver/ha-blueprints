@@ -26,12 +26,12 @@ action_type_options: &action_type_options
 # ============================================================
 
 blueprint:
-  name: Zigbee2MQTT – Generic Action Mapper (Pattern + 12 slots)
+  name: Zigbee2MQTT
   description: >
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     
   domain: automation
-  version: "1.2.3"
+  version: "1.2.4"
 
   input:
 
