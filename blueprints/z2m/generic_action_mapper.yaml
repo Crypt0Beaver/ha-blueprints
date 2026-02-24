@@ -1,38 +1,378 @@
 blueprint:
-  name: Zigbee2MQTT – Generic Action Mapper
+  name: Zigbee2MQTT – Generic Action Mapper (Pattern + 12 slots)
   description: >
-    A fully generic blueprint for mapping Zigbee2MQTT action payloads
-    to Home Assistant actions. Works with any Z2M remote or button device.
+    A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
+    The action name is constructed from a user-defined pattern using {{button}} and {{type}}.
   domain: automation
+  version: "1.1.0"
+
   input:
     device_name:
       name: Zigbee2MQTT Device Name
-      description: >
-        The device name as shown in zigbee2mqtt/<device_name>/action.
-        Example: "zg-101zs" or "livingroom_switch".
       selector:
         text:
 
-    mappings:
-      name: Action Mappings
+    action_pattern:
+      name: Action Pattern
       description: >
-        Add as many mappings as you want. For each entry, specify the
-        Zigbee2MQTT action payload (e.g. "1_single", "2_hold", "button_3_double")
-        and the Home Assistant action to run.
+        Use {{button}} and {{type}} placeholders.
+        Example: "{{button}}_{{type}}" or "button_{{button}}_{{type}}"
+      default: "{{button}}_{{type}}"
       selector:
-        object:
-          multiple: true
-          fields:
-            action:
-              name: Z2M Action Payload
-              description: The exact payload sent by Zigbee2MQTT.
-              selector:
-                text:
-            ha_action:
-              name: Home Assistant Action
-              description: Action to run when this payload is received.
-              selector:
-                action: {}
+        text:
+
+    # -----------------------------
+    # 12 MAPPING SLOTS
+    # -----------------------------
+
+    # SLOT 1
+    mapping_1_button:
+      name: Mapping 1 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_1_type:
+      name: Mapping 1 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_1_type_custom:
+      name: Mapping 1 – Custom Action Type
+      description: Only used if Action Type = custom
+      selector:
+        text:
+
+    mapping_1_ha_action:
+      name: Mapping 1 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 2
+    mapping_2_button:
+      name: Mapping 2 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_2_type:
+      name: Mapping 2 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_2_type_custom:
+      name: Mapping 2 – Custom Action Type
+      selector:
+        text:
+
+    mapping_2_ha_action:
+      name: Mapping 2 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 3
+    mapping_3_button:
+      name: Mapping 3 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_3_type:
+      name: Mapping 3 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_3_type_custom:
+      name: Mapping 3 – Custom Action Type
+      selector:
+        text:
+
+    mapping_3_ha_action:
+      name: Mapping 3 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 4
+    mapping_4_button:
+      name: Mapping 4 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_4_type:
+      name: Mapping 4 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_4_type_custom:
+      name: Mapping 4 – Custom Action Type
+      selector:
+        text:
+
+    mapping_4_ha_action:
+      name: Mapping 4 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 5
+    mapping_5_button:
+      name: Mapping 5 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_5_type:
+      name: Mapping 5 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_5_type_custom:
+      name: Mapping 5 – Custom Action Type
+      selector:
+        text:
+
+    mapping_5_ha_action:
+      name: Mapping 5 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 6
+    mapping_6_button:
+      name: Mapping 6 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_6_type:
+      name: Mapping 6 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_6_type_custom:
+      name: Mapping 6 – Custom Action Type
+      selector:
+        text:
+
+    mapping_6_ha_action:
+      name: Mapping 6 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 7
+    mapping_7_button:
+      name: Mapping 7 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_7_type:
+      name: Mapping 7 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_7_type_custom:
+      name: Mapping 7 – Custom Action Type
+      selector:
+        text:
+
+    mapping_7_ha_action:
+      name: Mapping 7 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 8
+    mapping_8_button:
+      name: Mapping 8 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_8_type:
+      name: Mapping 8 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_8_type_custom:
+      name: Mapping 8 – Custom Action Type
+      selector:
+        text:
+
+    mapping_8_ha_action:
+      name: Mapping 8 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 9
+    mapping_9_button:
+      name: Mapping 9 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_9_type:
+      name: Mapping 9 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_9_type_custom:
+      name: Mapping 9 – Custom Action Type
+      selector:
+        text:
+
+    mapping_9_ha_action:
+      name: Mapping 9 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 10
+    mapping_10_button:
+      name: Mapping 10 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_10_type:
+      name: Mapping 10 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_10_type_custom:
+      name: Mapping 10 – Custom Action Type
+      selector:
+        text:
+
+    mapping_10_ha_action:
+      name: Mapping 10 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 11
+    mapping_11_button:
+      name: Mapping 11 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_11_type:
+      name: Mapping 11 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_11_type_custom:
+      name: Mapping 11 – Custom Action Type
+      selector:
+        text:
+
+    mapping_11_ha_action:
+      name: Mapping 11 – Home Assistant Action
+      selector:
+        action:
+
+    # SLOT 12
+    mapping_12_button:
+      name: Mapping 12 – Button Number
+      selector:
+        select:
+          options: ["1", "2", "3", "4"]
+
+    mapping_12_type:
+      name: Mapping 12 – Action Type
+      selector:
+        select:
+          options:
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
+
+    mapping_12_type_custom:
+      name: Mapping 12 – Custom Action Type
+      selector:
+        text:
+
+    mapping_12_ha_action:
+      name: Mapping 12 – Home Assistant Action
+      selector:
+        action:
 
 trigger:
   - platform: mqtt
@@ -40,16 +380,29 @@ trigger:
 
 variables:
   payload: "{{ trigger.payload }}"
-  mappings: !input mappings
+  pattern: !input action_pattern
+
+  mappings:
+    {% for i in range(1,13) %}
+    - action: >
+        {{ pattern
+            | replace("{{button}}", (inputs["mapping_{{i}}_button"] | string))
+            | replace("{{type}}", (
+                inputs["mapping_{{i}}_type"] == "custom"
+                and inputs["mapping_{{i}}_type_custom"]
+                or inputs["mapping_{{i}}_type"]
+              ) | string)
+        }}
+      ha: !input mapping_{{i}}_ha_action
+    {% endfor %}
 
 action:
   - choose:
-      - conditions: >
-          {{ payload in mappings | map(attribute='action') | list }}
+      - conditions: "{{ payload in mappings | map(attribute='action') | list }}"
         sequence:
           - variables:
               idx: "{{ (mappings | map(attribute='action') | list).index(payload) }}"
-              selected: "{{ mappings[idx].ha_action }}"
+              selected: "{{ mappings[idx].ha }}"
           - choose:
               - conditions: "{{ selected is defined }}"
                 sequence: !input selected
