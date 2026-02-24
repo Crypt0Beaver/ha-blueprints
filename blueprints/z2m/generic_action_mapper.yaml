@@ -1,15 +1,10 @@
-
-# ============================================================
-# BLUEPRINT
-# ============================================================
-
 blueprint:
   name: Zigbee2MQTTT
   description: >
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     
   domain: automation
-  version: "1.2.12"
+  version: "1.2.13"
 
 trigger:
   - platform: mqtt
