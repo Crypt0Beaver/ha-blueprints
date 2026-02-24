@@ -3,5 +3,6 @@ blueprint:
   description: >
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
   domain: automation
+  version: "1.4.15"
 
 mode: single
