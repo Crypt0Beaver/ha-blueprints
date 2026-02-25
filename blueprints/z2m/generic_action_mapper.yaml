@@ -1,39 +1,10 @@
-# ============================================================
-# YAML ANCHORS (must be outside the blueprint block)
-# ============================================================
-
-# button_options: &button_options
-#   - "1"
-#   - "2"
-#   - "3"
-#   - "4"
-#   - "5"
-#   - "6"
-#   - "7"
-#   - "8"
-#   - "9"
-
-# action_type_options: &action_type_options
-#   - single
-#   - double
-#   - hold
-#   - long
-#   - release
-#   - custom
-
-# ============================================================
-# BLUEPRINT
-# ============================================================
-
 blueprint:
   name: Zigbee2MQTT – Generic Action Mapper (Pattern + 12 slots)
   description: >
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     The action name is constructed from a user-defined pattern using {{button}} and {{type}}.
-    Version 1.3.2
+    Version 1.3.3
   domain: automation
-
-  # version: 1.3.2
 
   input:
 
@@ -42,8 +13,8 @@ blueprint:
     # -----------------------------
 
     device_name:
-      name: Zigbee2MQTT Device Name
-      description: Must match zigbee2mqtt/<name>/action
+      name: Zigbee2MQTT Device
+      description: Select the MQTT device that publishes zigbee2mqtt/<name>/action
       selector:
         device:
           integration: mqtt
@@ -66,29 +37,14 @@ blueprint:
       name: Mapping 1 – Button Number
       selector:
         select:
-          options:
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_1_type:
       name: Mapping 1 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_1_type_custom:
@@ -108,29 +64,14 @@ blueprint:
       name: Mapping 2 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_2_type:
       name: Mapping 2 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_2_type_custom:
@@ -150,29 +91,14 @@ blueprint:
       name: Mapping 3 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_3_type:
       name: Mapping 3 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_3_type_custom:
@@ -192,29 +118,14 @@ blueprint:
       name: Mapping 4 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_4_type:
       name: Mapping 4 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_4_type_custom:
@@ -234,29 +145,14 @@ blueprint:
       name: Mapping 5 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_5_type:
       name: Mapping 5 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_5_type_custom:
@@ -276,29 +172,14 @@ blueprint:
       name: Mapping 6 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_6_type:
       name: Mapping 6 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_6_type_custom:
@@ -318,29 +199,14 @@ blueprint:
       name: Mapping 7 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_7_type:
       name: Mapping 7 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_7_type_custom:
@@ -360,29 +226,14 @@ blueprint:
       name: Mapping 8 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_8_type:
       name: Mapping 8 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_8_type_custom:
@@ -402,29 +253,14 @@ blueprint:
       name: Mapping 9 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_9_type:
       name: Mapping 9 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_9_type_custom:
@@ -444,29 +280,14 @@ blueprint:
       name: Mapping 10 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_10_type:
       name: Mapping 10 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_10_type_custom:
@@ -486,29 +307,14 @@ blueprint:
       name: Mapping 11 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_11_type:
       name: Mapping 11 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_11_type_custom:
@@ -528,29 +334,14 @@ blueprint:
       name: Mapping 12 – Button Number
       selector:
         select:
-          options: 
-            - "1"
-            - "2"
-            - "3"
-            - "4"
-            - "5"
-            - "6"
-            - "7"
-            - "8"
-            - "9"
+          options: ["1","2","3","4","5","6","7","8","9"]
       default: ""
 
     mapping_12_type:
       name: Mapping 12 – Action Type
       selector:
         select:
-          options: 
-            - single
-            - double
-            - hold
-            - long
-            - release
-            - custom
+          options: ["single","double","hold","long","release","custom"]
       default: ""
 
     mapping_12_type_custom:
@@ -571,7 +362,7 @@ blueprint:
 
 trigger:
   - platform: mqtt
-    topic: "zigbee2mqtt/{{ device_name }}/action"
+    topic: "zigbee2mqtt/{{ device_attr(device_name, 'name') }}/action"
 
 # ============================================================
 # VARIABLES
@@ -581,136 +372,138 @@ variables:
   payload: "{{ trigger.payload }}"
   pattern: !input action_pattern
 
+  # Extract all inputs into plain variables
+  b1: !input mapping_1_button
+  t1: !input mapping_1_type
+  tc1: !input mapping_1_type_custom
+
+  b2: !input mapping_2_button
+  t2: !input mapping_2_type
+  tc2: !input mapping_2_type_custom
+
+  b3: !input mapping_3_button
+  t3: !input mapping_3_type
+  tc3: !input mapping_3_type_custom
+
+  b4: !input mapping_4_button
+  t4: !input mapping_4_type
+  tc4: !input mapping_4_type_custom
+
+  b5: !input mapping_5_button
+  t5: !input mapping_5_type
+  tc5: !input mapping_5_type_custom
+
+  b6: !input mapping_6_button
+  t6: !input mapping_6_type
+  tc6: !input mapping_6_type_custom
+
+  b7: !input mapping_7_button
+  t7: !input mapping_7_type
+  tc7: !input mapping_7_type_custom
+
+  b8: !input mapping_8_button
+  t8: !input mapping_8_type
+  tc8: !input mapping_8_type_custom
+
+  b9: !input mapping_9_button
+  t9: !input mapping_9_type
+  tc9: !input mapping_9_type_custom
+
+  b10: !input mapping_10_button
+  t10: !input mapping_10_type
+  tc10: !input mapping_10_type_custom
+
+  b11: !input mapping_11_button
+  t11: !input mapping_11_type
+  tc11: !input mapping_11_type_custom
+
+  b12: !input mapping_12_button
+  t12: !input mapping_12_type
+  tc12: !input mapping_12_type_custom
+
+  # Build mapping table using only variables (no !input inside templates)
   mappings:
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_1_button | string))
-            | replace("{{type}}", (
-                !input mapping_1_type == "custom"
-                and !input mapping_1_type_custom
-                or !input mapping_1_type
-              ) | string)
+            | replace("{{button}}", b1)
+            | replace("{{type}}", (tc1 if t1 == "custom" else t1))
         }}
       ha: !input mapping_1_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_2_button | string))
-            | replace("{{type}}", (
-                !input mapping_2_type == "custom"
-                and !input mapping_2_type_custom
-                or !input mapping_2_type
-              ) | string)
+            | replace("{{button}}", b2)
+            | replace("{{type}}", (tc2 if t2 == "custom" else t2))
         }}
       ha: !input mapping_2_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_3_button | string))
-            | replace("{{type}}", (
-                !input mapping_3_type == "custom"
-                and !input mapping_3_type_custom
-                or !input mapping_3_type
-              ) | string)
+            | replace("{{button}}", b3)
+            | replace("{{type}}", (tc3 if t3 == "custom" else t3))
         }}
       ha: !input mapping_3_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_4_button | string))
-            | replace("{{type}}", (
-                !input mapping_4_type == "custom"
-                and !input mapping_4_type_custom
-                or !input mapping_4_type
-              ) | string)
+            | replace("{{button}}", b4)
+            | replace("{{type}}", (tc4 if t4 == "custom" else t4))
         }}
       ha: !input mapping_4_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_5_button | string))
-            | replace("{{type}}", (
-                !input mapping_5_type == "custom"
-                and !input mapping_5_type_custom
-                or !input mapping_5_type
-              ) | string)
+            | replace("{{button}}", b5)
+            | replace("{{type}}", (tc5 if t5 == "custom" else t5))
         }}
       ha: !input mapping_5_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_6_button | string))
-            | replace("{{type}}", (
-                !input mapping_6_type == "custom"
-                and !input mapping_6_type_custom
-                or !input mapping_6_type
-              ) | string)
+            | replace("{{button}}", b6)
+            | replace("{{type}}", (tc6 if t6 == "custom" else t6))
         }}
       ha: !input mapping_6_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_7_button | string))
-            | replace("{{type}}", (
-                !input mapping_7_type == "custom"
-                and !input mapping_7_type_custom
-                or !input mapping_7_type
-              ) | string)
+            | replace("{{button}}", b7)
+            | replace("{{type}}", (tc7 if t7 == "custom" else t7))
         }}
       ha: !input mapping_7_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_8_button | string))
-            | replace("{{type}}", (
-                !input mapping_8_type == "custom"
-                and !input mapping_8_type_custom
-                or !input mapping_8_type
-              ) | string)
+            | replace("{{button}}", b8)
+            | replace("{{type}}", (tc8 if t8 == "custom" else t8))
         }}
       ha: !input mapping_8_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_9_button | string))
-            | replace("{{type}}", (
-                !input mapping_9_type == "custom"
-                and !input mapping_9_type_custom
-                or !input mapping_9_type
-              ) | string)
+            | replace("{{button}}", b9)
+            | replace("{{type}}", (tc9 if t9 == "custom" else t9))
         }}
       ha: !input mapping_9_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_10_button | string))
-            | replace("{{type}}", (
-                !input mapping_10_type == "custom"
-                and !input mapping_10_type_custom
-                or !input mapping_10_type
-              ) | string)
+            | replace("{{button}}", b10)
+            | replace("{{type}}", (tc10 if t10 == "custom" else t10))
         }}
       ha: !input mapping_10_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_11_button | string))
-            | replace("{{type}}", (
-                !input mapping_11_type == "custom"
-                and !input mapping_11_type_custom
-                or !input mapping_11_type
-              ) | string)
+            | replace("{{button}}", b11)
+            | replace("{{type}}", (tc11 if t11 == "custom" else t11))
         }}
       ha: !input mapping_11_ha_action
 
     - action: >
         {{ pattern
-            | replace("{{button}}", (!input mapping_12_button | string))
-            | replace("{{type}}", (
-                !input mapping_12_type == "custom"
-                and !input mapping_12_type_custom
-                or !input mapping_12_type
-              ) | string)
+            | replace("{{button}}", b12)
+            | replace("{{type}}", (tc12 if t12 == "custom" else t12))
         }}
       ha: !input mapping_12_ha_action
 
