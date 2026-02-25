@@ -1,28 +1,39 @@
-button_options: &button_options
-  - "1"
-  - "2"
-  - "3"
-  - "4"
-  - "5"
-  - "6"
-  - "7"
-  - "8"
-  - "9"
-action_type_options: &action_type_options
-  - single
-  - double
-  - hold
-  - long
-  - release
-  - custom
+# ============================================================
+# YAML ANCHORS (must be outside the blueprint block)
+# ============================================================
+
+# button_options: &button_options
+#   - "1"
+#   - "2"
+#   - "3"
+#   - "4"
+#   - "5"
+#   - "6"
+#   - "7"
+#   - "8"
+#   - "9"
+
+# action_type_options: &action_type_options
+#   - single
+#   - double
+#   - hold
+#   - long
+#   - release
+#   - custom
+
+# ============================================================
+# BLUEPRINT
+# ============================================================
+
 blueprint:
   name: Zigbee2MQTT – Generic Action Mapper (Pattern + 12 slots)
   description: >
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     The action name is constructed from a user-defined pattern using {{button}} and {{type}}.
+    Version 1.3.2
   domain: automation
 
-  # version: 1.3.1
+  # version: 1.3.2
 
   input:
 
@@ -55,14 +66,29 @@ blueprint:
       name: Mapping 1 – Button Number
       selector:
         select:
-          options: *button_options
+          options:
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_1_type:
       name: Mapping 1 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_1_type_custom:
@@ -82,14 +108,29 @@ blueprint:
       name: Mapping 2 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_2_type:
       name: Mapping 2 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_2_type_custom:
@@ -109,14 +150,29 @@ blueprint:
       name: Mapping 3 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_3_type:
       name: Mapping 3 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_3_type_custom:
@@ -136,14 +192,29 @@ blueprint:
       name: Mapping 4 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_4_type:
       name: Mapping 4 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_4_type_custom:
@@ -163,14 +234,29 @@ blueprint:
       name: Mapping 5 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_5_type:
       name: Mapping 5 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_5_type_custom:
@@ -190,14 +276,29 @@ blueprint:
       name: Mapping 6 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_6_type:
       name: Mapping 6 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_6_type_custom:
@@ -217,14 +318,29 @@ blueprint:
       name: Mapping 7 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_7_type:
       name: Mapping 7 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_7_type_custom:
@@ -244,14 +360,29 @@ blueprint:
       name: Mapping 8 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_8_type:
       name: Mapping 8 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_8_type_custom:
@@ -271,14 +402,29 @@ blueprint:
       name: Mapping 9 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_9_type:
       name: Mapping 9 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_9_type_custom:
@@ -298,14 +444,29 @@ blueprint:
       name: Mapping 10 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_10_type:
       name: Mapping 10 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_10_type_custom:
@@ -325,14 +486,29 @@ blueprint:
       name: Mapping 11 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_11_type:
       name: Mapping 11 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_11_type_custom:
@@ -352,14 +528,29 @@ blueprint:
       name: Mapping 12 – Button Number
       selector:
         select:
-          options: *button_options
+          options: 
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
       default: ""
 
     mapping_12_type:
       name: Mapping 12 – Action Type
       selector:
         select:
-          options: *action_type_options
+          options: 
+            - single
+            - double
+            - hold
+            - long
+            - release
+            - custom
       default: ""
 
     mapping_12_type_custom:
