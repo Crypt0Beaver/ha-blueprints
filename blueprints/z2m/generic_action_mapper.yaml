@@ -3,7 +3,7 @@ blueprint:
   description: >
     A generic blueprint for mapping Zigbee2MQTT action payloads to Home Assistant actions.
     The action name is constructed from a user-defined pattern using {{button}} and {{type}}.
-    Version 1.3.4
+    Version 1.3.5
   domain: automation
 
   input:
@@ -18,6 +18,13 @@ blueprint:
       selector:
         device:
           integration: mqtt
+
+    z2m_name:
+      name: Zigbee2MQTT Friendly Name
+      description: Must match zigbee2mqtt/<name>/action
+      selector:
+        text:
+
 
     action_pattern:
       name: Action Pattern
@@ -362,7 +369,7 @@ blueprint:
 
 trigger:
   - platform: mqtt
-    topic: "zigbee2mqtt/{{ device_name }}/action"
+    topic: "zigbee2mqtt/{{ z2m_name }}/action"
 
 # ============================================================
 # VARIABLES
